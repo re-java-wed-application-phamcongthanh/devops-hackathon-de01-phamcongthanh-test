@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Hackathon - Đề 001 - Phạm Công Thành</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            --card-bg: rgba(30, 41, 59, 0.75);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-purple: #a855f7;
+            --accent-green: #34d399;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .header-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .header-card h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-blue);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.75rem;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .info-table td {
+            padding: 0.65rem 0;
+            font-size: 0.95rem;
+        }
+
+        .info-table td.label {
+            color: var(--text-muted);
+            width: 40%;
+            font-weight: 400;
+        }
+
+        .info-table td.value {
+            color: var(--text-main);
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        a.link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a.link:hover {
+            color: var(--accent-purple);
+            text-decoration: underline;
+        }
+
+        .intro-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+        }
+
+        .intro-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.975rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Card with exact H1 -->
+        <header class="header-card">
+            <span class="badge">DevOps Hackathon 2026</span>
+            <h1 id="main-title">Xin chào đến với Ptit Rikkei DevOps Lab - Phạm Công Thành - N24DTCN079 - CNTT1</h1>
+        </header>
+
+        <!-- Grid layout for Student Info & Exam Info -->
+        <div class="grid-layout">
+            <!-- Student Info Block -->
+            <section class="card" id="student-info">
+                <h2 class="card-title">👨‍💻 Thông Tin Sinh Viên</h2>
+                <table class="info-table">
+                    <tbody>
+                        <tr>
+                            <td class="label">Họ và tên</td>
+                            <td class="value">Phạm Công Thành</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Mã sinh viên</td>
+                            <td class="value">N24DTCN079</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Lớp</td>
+                            <td class="value">CNTT1</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Email</td>
+                            <td class="value">phamcongt56@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Tài khoản Linux</td>
+                            <td class="value">phamcongthanh-cntt1</td>
+                        </tr>
+                        <tr>
+                            <td class="label">GitHub Username</td>
+                            <td class="value">
+                                <a href="https://github.com/re-java-wed-application-phamcongthanh" target="_blank" class="link">
+                                    phamcongthanhvn2k6
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Exam Info Block -->
+            <section class="card" id="exam-info">
+                <h2 class="card-title">📝 Thông Tin Bài Thi</h2>
+                <table class="info-table">
+                    <tbody>
+                        <tr>
+                            <td class="label">Đề số</td>
+                            <td class="value">001</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Chủ đề</td>
+                            <td class="value">Quản lý phòng Lab</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Cổng Nginx</td>
+                            <td class="value">8081</td>
+                        </tr>
+                        <tr>
+                            <td class="label">IP Máy chủ</td>
+                            <td class="value">103.72.57.149</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Ngày thi</td>
+                            <td class="value">09/10/2026</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Repository</td>
+                            <td class="value">
+                                <a href="https://github.com/re-java-wed-application-phamcongthanh/devops-hackathon-de01-phamcongthanh-test" target="_blank" class="link">
+                                    devops-hackathon-de01-phamcongthanh
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+        <!-- System Intro Block (2-3 sentences) -->
+        <section class="intro-card" id="system-intro">
+            <h2 class="card-title">🚀 Giới Thiệu Hệ Thống "Quản Lý Phòng Lab"</h2>
+            <p>Hệ thống Quản lý phòng Lab được thiết kế nhằm tối ưu hóa quy trình theo dõi, vận hành và phân bổ tài nguyên máy tính phục vụ cho học tập và nghiên cứu. Giải pháp giúp tự động hóa việc quản lý thiết bị, đảm bảo an toàn truy cập qua tường lửa UFW và tối ưu hóa hiệu năng phục vụ với Nginx Web Server.</p>
+            <p>Mã nguồn được đóng gói và quản lý theo chuẩn DevOps, hỗ trợ tích hợp quy trình triển khai liên tục và sẵn sàng mở rộng cho toàn bộ trung tâm thực hành.</p>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 PTIT Rikkei DevOps Lab. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
